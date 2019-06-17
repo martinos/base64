@@ -66,7 +66,8 @@ viewOutput model =
     div [ class "row" ]
         [ case model.input |> String.replace "\n" "" |> String.replace " " "" |> String.replace "\u{000D}" "" |> Base64.decode of
             Ok decoded ->
-                text decoded
+                pre [ id "copy-me", style "position" "relative", style "white-space" "pre-wrap", style "word-wrap" "break-word" ]
+                    [ decoded |> text, copyButton ]
 
             Err err ->
                 text ("Error:" ++ err)
@@ -80,3 +81,14 @@ stylesheet url =
         , href url
         ]
         []
+
+
+copyButton =
+    button
+        [ class "copy-button button is-small"
+        , attribute "data-clipboard-target" "#copy-me"
+        , style "position" "absolute"
+        , style "top" "0.25rem"
+        , style "right" "0.25rem"
+        ]
+        [ "Copy" |> text ]

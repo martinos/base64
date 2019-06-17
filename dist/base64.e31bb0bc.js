@@ -5626,6 +5626,34 @@ var author$project$Main$stylesheet = function (url) {
 			]),
 		_List_Nil);
 };
+var elm$html$Html$button = _VirtualDom_node('button');
+var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
+var elm$html$Html$text = elm$virtual_dom$VirtualDom$text;
+var elm$virtual_dom$VirtualDom$attribute = F2(
+	function (key, value) {
+		return A2(
+			_VirtualDom_attribute,
+			_VirtualDom_noOnOrFormAction(key),
+			_VirtualDom_noJavaScriptOrHtmlUri(value));
+	});
+var elm$html$Html$Attributes$attribute = elm$virtual_dom$VirtualDom$attribute;
+var elm$html$Html$Attributes$class = elm$html$Html$Attributes$stringProperty('className');
+var elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var elm$html$Html$Attributes$style = elm$virtual_dom$VirtualDom$style;
+var author$project$Main$copyButton = A2(
+	elm$html$Html$button,
+	_List_fromArray(
+		[
+			elm$html$Html$Attributes$class('copy-button button is-small'),
+			A2(elm$html$Html$Attributes$attribute, 'data-clipboard-target', '#copy-me'),
+			A2(elm$html$Html$Attributes$style, 'position', 'absolute'),
+			A2(elm$html$Html$Attributes$style, 'top', '0.25rem'),
+			A2(elm$html$Html$Attributes$style, 'right', '0.25rem')
+		]),
+	_List_fromArray(
+		[
+			elm$html$Html$text('Copy')
+		]));
 var elm$core$String$replace = F3(
 	function (before, after, string) {
 		return A2(
@@ -5634,9 +5662,8 @@ var elm$core$String$replace = F3(
 			A2(elm$core$String$split, before, string));
 	});
 var elm$html$Html$div = _VirtualDom_node('div');
-var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
-var elm$html$Html$text = elm$virtual_dom$VirtualDom$text;
-var elm$html$Html$Attributes$class = elm$html$Html$Attributes$stringProperty('className');
+var elm$html$Html$pre = _VirtualDom_node('pre');
+var elm$html$Html$Attributes$id = elm$html$Html$Attributes$stringProperty('id');
 var elm$core$Basics$composeR = F3(
 	function (f, g, x) {
 		return g(
@@ -5957,7 +5984,20 @@ var author$project$Main$viewOutput = function (model) {
 							A3(elm$core$String$replace, '\n', '', model.input))));
 				if (_n0.$ === 'Ok') {
 					var decoded = _n0.a;
-					return elm$html$Html$text(decoded);
+					return A2(
+						elm$html$Html$pre,
+						_List_fromArray(
+							[
+								elm$html$Html$Attributes$id('copy-me'),
+								A2(elm$html$Html$Attributes$style, 'position', 'relative'),
+								A2(elm$html$Html$Attributes$style, 'white-space', 'pre-wrap'),
+								A2(elm$html$Html$Attributes$style, 'word-wrap', 'break-word')
+							]),
+						_List_fromArray(
+							[
+								elm$html$Html$text(decoded),
+								author$project$Main$copyButton
+							]));
 				} else {
 					var err = _n0.a;
 					return elm$html$Html$text('Error:' + err);
@@ -5970,14 +6010,6 @@ var elm$html$Html$h1 = _VirtualDom_node('h1');
 var elm$html$Html$p = _VirtualDom_node('p');
 var elm$html$Html$section = _VirtualDom_node('section');
 var elm$html$Html$textarea = _VirtualDom_node('textarea');
-var elm$virtual_dom$VirtualDom$attribute = F2(
-	function (key, value) {
-		return A2(
-			_VirtualDom_attribute,
-			_VirtualDom_noOnOrFormAction(key),
-			_VirtualDom_noJavaScriptOrHtmlUri(value));
-	});
-var elm$html$Html$Attributes$attribute = elm$virtual_dom$VirtualDom$attribute;
 var elm$html$Html$Attributes$placeholder = elm$html$Html$Attributes$stringProperty('placeholder');
 var elm$html$Html$Attributes$value = elm$html$Html$Attributes$stringProperty('value');
 var elm$html$Html$Events$alwaysStop = function (x) {
@@ -6466,9 +6498,6 @@ var elm$browser$Debugger$Overlay$viewBadMetadata = function (_n0) {
 };
 var elm$browser$Debugger$Overlay$Cancel = {$: 'Cancel'};
 var elm$browser$Debugger$Overlay$Proceed = {$: 'Proceed'};
-var elm$html$Html$button = _VirtualDom_node('button');
-var elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
-var elm$html$Html$Attributes$style = elm$virtual_dom$VirtualDom$style;
 var elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 'Normal', a: a};
 };
@@ -6530,7 +6559,6 @@ var elm$browser$Debugger$Overlay$viewButtons = function (buttons) {
 };
 var elm$virtual_dom$VirtualDom$map = _VirtualDom_map;
 var elm$html$Html$map = elm$virtual_dom$VirtualDom$map;
-var elm$html$Html$Attributes$id = elm$html$Html$Attributes$stringProperty('id');
 var elm$browser$Debugger$Overlay$viewMessage = F4(
 	function (config, title, details, buttons) {
 		return A2(
@@ -10906,7 +10934,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55134" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51301" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
