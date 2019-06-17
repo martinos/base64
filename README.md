@@ -14,8 +14,11 @@ To make livereloading reloading you can:
 yarn run parcel index.html
 ```
 
-To produce the final build:
+## Deployment
+
+Run the following commands:
 
 ```
 yarn run parcel build index.html
+./deploy.sh
 ```
